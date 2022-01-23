@@ -13,5 +13,4 @@ class Command(database.Model):
 	output = database.Column(database.Text)
 
 	bot_uuid = database.Column(database.String(36), database.ForeignKey("bots.uuid"))
-
 	bot = database.relationship("Bot", backref=database.backref("commands", lazy="dynamic"))
