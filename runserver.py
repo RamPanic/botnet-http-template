@@ -4,8 +4,8 @@ import config
 from flask import Flask
 
 from routes.bots import bots
+from schemas.schema import marshmallow
 from utils.database import database
-
 
 def create_app(config=None):
 
@@ -25,6 +25,10 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Init DB
 
 database.init_app(app)
+
+# Init schema
+
+marshmallow.init_app(app)
 
 # Blueprints
 

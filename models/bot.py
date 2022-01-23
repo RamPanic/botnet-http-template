@@ -1,8 +1,8 @@
 
-
 from datetime import datetime as dt
 
 from utils.database import database
+
 
 class Bot(database.Model):
 
