@@ -1,0 +1,89 @@
+
+<!-- Acá estará todo el Template relacionado a la consola de un bot -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Bot console</title>
+</head>
+<body>
+
+	command:
+	<input id="command" type="" name="">
+	<input id="sendcmd-btn" type="button" name="" value="Enviar">
+
+	<div id="output"></div>
+
+</body>
+
+<!-- Librerías -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+
+	const TIME_REFRESH = 500;
+	const COMMAND_URL = "http://127.0.0.1:5000/api/bot/{{ bot.uuid }}/command";
+
+
+	function push_command (){
+
+		let command = document.getElementById("command").value;
+
+		let data = { "line": command, "output": "" }
+
+		$.ajax({
+
+		  url: COMMAND_URL,
+		  type: 'POST',
+		  dataType: 'json',
+          contentType: 'application/json',
+		  data: JSON.stringify(data),
+		  success: function(data) {
+
+		  }
+		
+		});
+
+	}
+
+
+	function get_output_command(){
+
+		$.ajax({
+
+		  url: COMMAND_URL,
+		  type: 'GET',
+		  dataType: 'json',
+          contentType: 'application/json',
+		  success: function(data) {
+		    
+		  	$('#output').html(data["output"]);
+
+		  }
+		
+		});
+
+	}
+
+
+	$("#sendcmd-btn").click(function(){
+
+		push_command();
+
+	});
+
+
+	$(document).ready(function(){
+	
+			setInterval(get_output_command, TIME_REFRESH);
+	
+	});
+
+</script>
+
+
+</html>

@@ -1,8 +1,17 @@
+
+<!-- Acá estará todo el Template relacionado a los bots -->
+
 {% for bot in bots %}
 	
+	<div>{{ bot.uuid }}</div>
 	<div>{{ bot.hostname }}</div>
 	<div>{{ bot.username }}</div>
 	<div>{{ bot.os }}<div>
+	<div>{{ bot.datetime }}</div>	
+	<div>{{ bot.remote_ip }}</div>
+	<div>{{ bot.local_ip }}</div>
+	<div>{{ bot.state }}</div>
+	<div>{{ bot.location }}</div>
 
 	<br><br>
 

