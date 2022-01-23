@@ -4,6 +4,7 @@ import config
 from flask import Flask
 
 from routes.bots import bots
+from routes.general import general
 from schemas.schema import marshmallow
 from utils.database import database
 
@@ -33,6 +34,7 @@ marshmallow.init_app(app)
 # Blueprints
 
 app.register_blueprint(bots)
+app.register_blueprint(general)
 
 
 if __name__ == '__main__':
