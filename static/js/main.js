@@ -1,7 +1,5 @@
 
-function push_command(){
-
-    let command = $("#command").val();
+function push_command(command){
 
     let data = { line: command, output: "" }
 
@@ -54,7 +52,7 @@ $("#sendcmd-btn").click(function(){
 
     }
 
-    push_command();
+    push_command(command);
 
 });
 
