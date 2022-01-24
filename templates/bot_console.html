@@ -1,14 +1,11 @@
 
-<!-- Acá estará todo el Template relacionado a la consola de un bot -->
+{% extends "layout.html" %}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bot console</title>
-</head>
-<body>
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+    <!-- Acá estará todo el Template relacionado a la consola de un bot -->
 
     command:
     <input id="command" type="" name="">
@@ -16,11 +13,12 @@
 
     <div id="output"></div>
 
-</body>
+{% endblock %}
+
+{% block custom_scripts %}
 
 <!-- Librerías -->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='/js/requests.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='/js/main.js') }}"></script>
 
@@ -34,8 +32,8 @@
 
     const TIME_REFRESH = 500;
 
-    const TIME_BEFORE_DELETE_BOT = 800;
+    const TIME_BEFORE_DELETE_BOT = 1000;
 
 </script>
 
-</html>
+{% endblock %}

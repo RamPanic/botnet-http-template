@@ -1,11 +1,22 @@
-<!-- Acá estará todo el Template relacionado a un bot -->
+{% extends "layout.html" %}
 
-<div>{{ bot.uuid }}</div>
-<div>{{ bot.hostname }}</div>
-<div>{{ bot.username }}</div>
-<div>{{ bot.os }}<div>
-<div>{{ bot.datetime }}</div>	
-<div>{{ bot.remote_ip }}</div>
-<div>{{ bot.local_ip }}</div>
-<div>{{ bot.state }}</div>
-<div>{{ bot.location }}</div>
+{% block title %}Bot details{% endblock %}
+
+{% block content %}
+
+	<!-- Acá estará todo el Template relacionado a un bot -->
+
+	<div>{{ bot.uuid }}</div>
+	<div>{{ bot.hostname }}</div>
+	<div>{{ bot.username }}</div>
+	<div>{{ bot.os }}<div>
+	<div>{{ bot.datetime }}</div>	
+	<div>{{ bot.remote_ip }}</div>
+	<div>{{ bot.local_ip }}</div>
+	<div>{{ bot.state }}</div>
+	<div>{{ bot.location }}</div>
+
+{% endblock %}
+
+{% block custom_scripts %}
+{% endblock %}

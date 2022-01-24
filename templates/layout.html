@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Botnet Template | {% block title %}{% endblock %}</title>
+
+	<!-- CSS BOOTSTRAP -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+
+	<!-- CUSTOM CSS -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/default.css') }}">
+
+	<!-- Menu Principal -->
+
+</head>
+
+<body class="">
+	
+	<div class="container">
+
+		{% block content %}
+		{% endblock%}
+
+	</div>
+
+	<!-- SCRIPTS JAVASCRIPT -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+	{% block custom_scripts %}
+	{% endblock %}
+
+</body>
+</html>
