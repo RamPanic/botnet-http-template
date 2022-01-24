@@ -1,8 +1,7 @@
 
-import config
-
 from flask import Flask
 
+from config import config
 from routes.bots import bots
 from routes.general import general
 from schemas.schema import marshmallow
@@ -20,8 +19,13 @@ app = create_app()
 
 # Config
 
-app.config['SQLALCHEMY_DATABASE_URI'] = config.DATABASE_URI
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# Using a production configuration
+
+# app.config.from_object('config.ProdConfig')
+
+# Using a development configuration
+
+app.config.from_object(config['dev'])
 
 # Init DB
 
@@ -39,4 +43,4 @@ app.register_blueprint(general)
 
 if __name__ == '__main__':
 
-    app.run(host=config.IP_SERVER, port=config.PORT_SERVER, debug=config.DEBUG)
+    app.run(host=app.config["HOST"], port=app.config["PORT"])
