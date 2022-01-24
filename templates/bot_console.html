@@ -4,17 +4,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Bot console</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bot console</title>
 </head>
 <body>
 
-	command:
-	<input id="command" type="" name="">
-	<input id="sendcmd-btn" type="button" name="" value="Enviar">
+    command:
+    <input id="command" type="" name="">
+    <input id="sendcmd-btn" type="button" name="" value="Enviar">
 
-	<div id="output"></div>
+    <div id="output"></div>
 
 </body>
 
@@ -25,16 +25,16 @@
 <script type="text/javascript" src="{{ url_for('static', filename='/js/main.js') }}"></script>
 
 <script type="text/javascript">
-	
-	const URL_API_BASE = "/api/bot"
+    
+    const URL_API_BASE = "/api/bot"
 
-	const URL_API_BOT = URL_API_BASE + "/{{ bot.uuid }}"
+    const URL_API_BOT = URL_API_BASE + "/{{ bot.uuid }}"
 
-	const URL_COMMAND = URL_API_BASE + "/{{ bot.uuid }}/command";
+    const URL_COMMAND = URL_API_BASE + "/{{ bot.uuid }}/command";
 
-	const TIME_REFRESH = 500;
+    const TIME_REFRESH = 500;
 
-	const TIME_BEFORE_DELETE_BOT = 500;
+    const TIME_BEFORE_DELETE_BOT = 500;
 
 </script>
 

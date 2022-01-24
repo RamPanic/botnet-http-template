@@ -8,24 +8,24 @@ import requests
 
 def get_uuid():
 
-	return str(uuid.getnode())
+    return str(uuid.getnode())
 
 def get_hostname():
 
-	return socket.gethostname()
+    return socket.gethostname()
 
 def get_username():
 
-	return getpass.getuser()
+    return getpass.getuser()
 
 def get_platform():
 
-	return platform.system()
+    return platform.system()
 
 def get_local_ip():
 
-	return socket.gethostbyname(get_hostname())
+    return socket.gethostbyname(get_hostname())
 
 def get_remote_ip():
 
-	return (json.loads(requests.get("https://api.ipify.org/?format=json").text))["ip"]
+    return (json.loads(requests.get("https://api.ipify.org/?format=json").text))["ip"]

@@ -10,9 +10,9 @@ from utils.database import database
 
 def create_app(config=None):
 
-	app = Flask(__name__)
+    app = Flask(__name__)
 
-	return app
+    return app
 
 # Initial
 
@@ -39,4 +39,4 @@ app.register_blueprint(general)
 
 if __name__ == '__main__':
 
-	app.run(host=config.IP_SERVER, port=config.PORT_SERVER, debug=config.DEBUG)
+    app.run(host=config.IP_SERVER, port=config.PORT_SERVER, debug=config.DEBUG)

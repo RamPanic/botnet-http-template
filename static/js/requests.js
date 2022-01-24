@@ -1,9 +1,9 @@
 
 function post_request(url, data, callback) {
 
-	return $.ajax({
-	
-		'url': url,
+    return $.ajax({
+    
+        'url': url,
         'type': 'POST',
         'contentType': 'application/json',
         'data': JSON.stringify(data),
@@ -28,9 +28,9 @@ function delete_request(url, callback) {
 
 function get_request(url, callback){
 
-	return $.ajax({
+    return $.ajax({
 
-		'url': url,
+        'url': url,
         'type': 'GET',
         'success': callback
     
