@@ -21,69 +21,21 @@
 <!-- Librerías -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+<script type="text/javascript" src="{{ url_for('static', filename='/js/requests.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='/js/main.js') }}"></script>
 
 <script type="text/javascript">
+	
+	const URL_API_BASE = "/api/bot"
+
+	const URL_API_BOT = URL_API_BASE + "/{{ bot.uuid }}"
+
+	const URL_COMMAND = URL_API_BASE + "/{{ bot.uuid }}/command";
 
 	const TIME_REFRESH = 500;
-	const COMMAND_URL = "http://127.0.0.1:5000/api/bot/{{ bot.uuid }}/command";
 
-
-	function push_command (){
-
-		let command = document.getElementById("command").value;
-
-		let data = { "line": command, "output": "" }
-
-		$.ajax({
-
-		  url: COMMAND_URL,
-		  type: 'POST',
-		  dataType: 'json',
-          contentType: 'application/json',
-		  data: JSON.stringify(data),
-		  success: function(data) {
-
-		  }
-		
-		});
-
-	}
-
-
-	function get_output_command(){
-
-		$.ajax({
-
-		  url: COMMAND_URL,
-		  type: 'GET',
-		  dataType: 'json',
-          contentType: 'application/json',
-		  success: function(data) {
-		    
-		  	$('#output').html(data["output"]);
-
-		  }
-		
-		});
-
-	}
-
-
-	$("#sendcmd-btn").click(function(){
-
-		push_command();
-
-	});
-
-
-	$(document).ready(function(){
-	
-			setInterval(get_output_command, TIME_REFRESH);
-	
-	});
+	const TIME_BEFORE_DELETE_BOT = 500;
 
 </script>
-
 
 </html>

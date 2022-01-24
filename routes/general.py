@@ -12,6 +12,13 @@ from utils.database import database
 
 general = Blueprint("general", __name__)
 
+
+@general.route("/", methods=["GET"])
+def index():
+
+	return render_template("index.html")
+
+
 @general.route("/bots", methods=["GET"])
 def bot_list():
 
