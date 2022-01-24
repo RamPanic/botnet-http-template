@@ -12,7 +12,7 @@ function push_command(){
 function remove_bot(){
 
     delete_request(URL_API_BOT, function (argument) {
-        
+
         window.location.replace("/");
 
     });
@@ -45,6 +45,14 @@ function get_output(){
 
 
 $("#sendcmd-btn").click(function(){
+
+    let command = $("#command").val();
+
+    if (command.localeCompare("exit") == 0){
+
+        $("#sendcmd-btn").prop('disabled', true);
+
+    }
 
     push_command();
 
