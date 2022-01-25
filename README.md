@@ -10,9 +10,15 @@ Una plantilla básica para crear tu propia botnet, no solo el estilo del panel, 
 pip3 install -r requirements.txt
 ```
 
-### Ejecutar el C&C
+### Configurar 
 
-Primero configuramos el archivo *config.py* y luego escribimos:
+Editamos el archivo *config.py*:
+
+```bash
+vim config.py
+```
+
+### Ejecutar el C&C
 
 ```bash
 python3 runserver.py
