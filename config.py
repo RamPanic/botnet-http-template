@@ -1,9 +1,9 @@
 
-"""Flask configuration."""
+""" Flask configuration. """
 
 class Config:
 
-    """Base config."""
+    """ Base config """
 
     SECRET_KEY = ""
     
@@ -16,7 +16,7 @@ class Config:
 
 class ProdConfig(Config):
 
-    # Basic
+    """ Base config production """
 
     IP_SERVER = ""
     PORT_SERVER = 5000
@@ -25,7 +25,7 @@ class ProdConfig(Config):
     DEBUG = False
     TESTING = False
 
-    # Database
+    """ Database config production """
 
     MYSQL_USER = ""
     MYSQL_PASSWORD = ""
@@ -37,7 +37,7 @@ class ProdConfig(Config):
 
 class DevConfig(Config):
 
-    # Basic
+    """ Base config development """
 
     HOST = "127.0.0.1"
     PORT = 5000
@@ -46,7 +46,7 @@ class DevConfig(Config):
     DEBUG = True
     TESTING = True
 
-    # Database
+    """ Database config development """
 
     MYSQL_USER = "root"
     MYSQL_PASSWORD = ""

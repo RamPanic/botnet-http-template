@@ -1,5 +1,9 @@
 
+# System imports
+
 from flask import Flask
+
+# Custom imports
 
 from config import config
 from routes.bots import bots
@@ -7,21 +11,14 @@ from routes.general import general
 from schemas.schema import marshmallow
 from utils.database import database
 
-def create_app(config=None):
-
-    app = Flask(__name__)
-
-    return app
 
 # Initial
 
-app = create_app()
-
-# Config
+app = Flask(__name__)
 
 # Using a production configuration
 
-# app.config.from_object('config.ProdConfig')
+# app.config.from_object(config['prod'])
 
 # Using a development configuration
 

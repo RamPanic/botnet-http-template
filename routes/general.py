@@ -1,16 +1,25 @@
 
+# Systems imports
+
 from flask import Blueprint
 from flask import render_template
 from flask import abort
 
+# Custom imports
+
 from models.bot import Bot
-
 from schemas.bot import bots_schema
-
 from utils.database import database
 
 
 general = Blueprint("general", __name__)
+
+
+# ================================================================== #
+#                                                                    #
+#                               Paths                                #
+#                                                                    #
+# ================================================================== #
 
 
 @general.route("/", methods=["GET"])
