@@ -1,0 +1,5 @@
+pyinstaller
+flask
+flask_sqlalchemy
+flask_marshmallow
+requests
