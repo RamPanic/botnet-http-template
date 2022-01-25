@@ -26,7 +26,7 @@ python3 runserver.py
 
 ## Cliente 
 
-## Ejecución
+### Ejecución
 
 Primero configuramos el archivo *config.py* y luego escribimos:
 
