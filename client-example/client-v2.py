@@ -222,11 +222,11 @@ if __name__ == '__main__':
 
             except requests.exceptions.ConnectionError as error:
 
-                print("Ha ocurrido un error en el servidor de C&C, reconectando...")
+                print(f"Ha ocurrido un error en el servidor de C&C: {error}, reconectando...")
 
                 time.sleep(TIME_RECONNECT)
 
-    except KeyboardInterrupt as error:
+    except KeyboardInterrupt:
 
         print("Desactivando malware a la fuerza")
 
