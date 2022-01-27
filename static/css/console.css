@@ -1,0 +1,23 @@
+
+/* Insert everything related to the Console here */
+
+.bt-console {
+
+    margin: auto;
+    width: var(--console-width);
+    height: var(--console-height);
+    border: 2px solid var(--secondary-color);
+    overflow-y: scroll;
+    color: var(--secondary-color);
+    padding: 20px;
+    white-space: pre-wrap;
+
+}
+
+.bt-prompt {
+
+    color: var(--secondary-color);
+    text-align: var(--console-prompt-align);
+    padding: 20px;
+
+}

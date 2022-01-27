@@ -1,0 +1,30 @@
+
+/* Constants */
+
+:root {
+
+    /* Colors */
+
+    --primary-color: #000000;
+    --secondary-color: #00CD2A;
+    --tertiary-color: #ffffff;
+
+    /* Titles */    
+
+    /*--common-title-size: 20px;*/
+
+    --title-align: center;
+    --title-padding: 40px;
+
+    /* Menu */
+
+    --menu-title-size: 35px;
+    --menu-links-size: 18px;
+
+    /* Console */
+
+    --console-width: 800px;
+    --console-height: 300px;
+    --console-prompt-align: center;
+
+}

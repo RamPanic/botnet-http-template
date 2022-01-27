@@ -5,25 +5,61 @@
 
 {% block content %}
 
-	<!-- Acá estará todo el Template relacionado a los bots -->
+    <!-- Acá estará todo el Template relacionado a los bots -->
 
-	{% for bot in bots %}
-		
-		<div>{{ bot.uuid }}</div>
-		<div>{{ bot.hostname }}</div>
-		<div>{{ bot.username }}</div>
-		<div>{{ bot.os }}<div>
-		<div>{{ bot.datetime }}</div>	
-		<div>{{ bot.remote_ip }}</div>
-		<div>{{ bot.local_ip }}</div>
-		<div>{{ bot.state }}</div>
-		<div>{{ bot.location }}</div>
+    <h2 class="bt-title">Bot list</h2>
 
-		<br><br>
+    <table class="table table-bordered bt-tables">
+      <thead>
+        <tr>
+          <th scope="col">UUID</th>
+          <th scope="col">Hostname</th>
+          <th scope="col">Username</th>
+          <th scope="col">OS</th>
+          <th scope="col">Datetime</th>
+          <th scope="col">Remote IP</th>
+          <th scope="col">Local IP</th>
+          <th scope="col">State</th>
+          <th scope="col">Location</th>
+        </tr>
+      </thead>
+      <tbody>
 
-	{% endfor %}
+        {% for bot in bots %}
+            
+            <tr class="bt-row-selected" data-href="/bots/{{ bot.uuid }}">
+              <td>{{ bot.uuid }}</td>
+              <td>{{ bot.hostname }}</td>
+              <td>{{ bot.username }}</td>
+              <td>{{ bot.os }}</td>
+              <td>{{ bot.datetime }}</td>
+              <td>{{ bot.remote_ip }}</td>
+              <td>{{ bot.local_ip }}</td>
+              <td>{{ bot.state }}</td>
+              <td>{{ bot.location }}</td>
+            </tr>
+
+        {% endfor %}
+
+      </tbody>
+    </table>
 
 {% endblock %}
 
 {% block custom_scripts %}
+
+    <script type="text/javascript">
+
+        $(document).ready(function($) {
+        
+            $(".bt-row-selected").click(function() {
+
+                window.document.location = $(this).data("href");
+            
+            });
+        
+        });
+
+    </script>
+
 {% endblock %}

@@ -4,19 +4,50 @@
 
 {% block content %}
 
-	<!-- Acá estará todo el Template relacionado a un bot -->
+    <!-- Acá estará todo el Template relacionado a un bot -->
 
-	<div>{{ bot.uuid }}</div>
-	<div>{{ bot.hostname }}</div>
-	<div>{{ bot.username }}</div>
-	<div>{{ bot.os }}<div>
-	<div>{{ bot.datetime }}</div>	
-	<div>{{ bot.remote_ip }}</div>
-	<div>{{ bot.local_ip }}</div>
-	<div>{{ bot.state }}</div>
-	<div>{{ bot.location }}</div>
+    <h2 class="bt-title">Bot details</h2>
+
+    <div class="row">
+
+        <div class="col-md-3">
+            
+            <img src="https://100k-faces.glitch.me/random-image" class="img-fluid" alt="Responsive image">
+
+        </div>
+
+        <div class="col-md-9">
+            
+            <div style="color: #00CD2A;">UUID: {{ bot.uuid }}</div>
+            <div style="color: #00CD2A;">Hostname: {{ bot.hostname }}</div>
+            <div style="color: #00CD2A;">Username: {{ bot.username }}</div>
+            <div style="color: #00CD2A;">Operative System: {{ bot.os }}<div>
+            <div style="color: #00CD2A;">Datetime: {{ bot.datetime }}</div> 
+            <div style="color: #00CD2A;">Remote IP: {{ bot.remote_ip }}</div>
+            <div style="color: #00CD2A;">Local IP: {{ bot.local_ip }}</div>
+            <div style="color: #00CD2A;">State: {{ bot.state }}</div>
+            <div style="color: #00CD2A;">Location: {{ bot.location }}</div>
+
+            <br>
+
+            <input id="btn-interact" type="button" name="" value="Interact with the zombie">
+
+        </div>
+        
+    </div>
 
 {% endblock %}
 
 {% block custom_scripts %}
+
+    <script type="text/javascript">
+        
+        $("#btn-interact").on("click", function(){
+
+            window.location = "/bots/{{ bot.uuid }}/console";
+
+        });
+
+    </script>
+
 {% endblock %}

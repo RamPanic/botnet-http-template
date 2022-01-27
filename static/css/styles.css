@@ -1,0 +1,41 @@
+
+@import "constants.css";
+@import "menu.css";
+@import "console.css";
+@import "sections.css";
+
+/* Insert everything related to the background here */ 
+
+.bt-background {
+
+    background: var(--primary-color);
+
+}
+
+
+/* Insert everything related to the tables here */ 
+
+.table tr, .table th, .table td, .table thead th{
+
+    color: var(--secondary-color);
+    border-color: var(--secondary-color);
+
+}
+
+.table .bt-row-selected:hover { 
+    
+    background-color: #5b5b5b; 
+    cursor: pointer;
+
+}
+
+
+/* Insert everything related to the titles here */
+
+.bt-title {
+
+    text-align: var(--title-align); 
+    color: var(--secondary-color); 
+    padding: var(--title-padding);
+
+}

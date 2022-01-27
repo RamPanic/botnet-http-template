@@ -7,11 +7,20 @@
 
     <!-- Acá estará todo el Template relacionado a la consola de un bot -->
 
-    command:
-    <input id="command" type="" name="">
-    <input id="sendcmd-btn" type="button" name="" value="Enviar">
+    <h2 class="bt-title">Bot Console</h2>
+        
+    <div class="bt-console">
+    
+        <div id="output"></div>
 
-    <div id="output"></div>
+    </div>
+
+    <div class="bt-prompt">
+        <label for="command">command</label> 
+        <input id="command" type="text" name="command">
+        <input id="sendcmd-btn" type="button" name="" value="Enviar">
+    </div>
+
 
 {% endblock %}
 

