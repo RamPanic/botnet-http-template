@@ -1,11 +1,17 @@
 
-# System imports
+# Standard library imports
 
-from flask import abort
-from flask import Blueprint, request
 from datetime import datetime as dt
 
-# Custom imports
+# Third-party imports
+
+from flask import ( abort,
+                    Blueprint, 
+                    request )
+
+from flask_login import login_required
+
+# Local application/library specific imports
 
 from models.bot import Bot
 from models.command import Command
@@ -108,6 +114,7 @@ def update_bot(uuid):
 
 
 @bots.route("/api/bot/<uuid>", methods=["DELETE"])
+@login_required
 def delete_bot(uuid):
 
     success_code = 0

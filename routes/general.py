@@ -1,11 +1,13 @@
 
-# Systems imports
+# Third-party imports
 
-from flask import Blueprint
-from flask import render_template
-from flask import abort
+from flask import ( Blueprint,
+                    render_template,
+                    abort )
 
-# Custom imports
+from flask_login import login_required
+
+# Local application/library specific imports
 
 from models.bot import Bot
 from schemas.bot import bots_schema
@@ -23,12 +25,14 @@ general = Blueprint("general", __name__)
 
 
 @general.route("/", methods=["GET"])
+@login_required
 def index():
 
     return render_template("index.html")
 
 
 @general.route("/bots", methods=["GET"])
+@login_required
 def bot_list():
 
     bots = Bot.query.all()
@@ -37,6 +41,7 @@ def bot_list():
 
 
 @general.route("/bots/<uuid>", methods=["GET"])
+@login_required
 def get_bot(uuid):
 
     bot = Bot.query.get(uuid)
@@ -49,6 +54,7 @@ def get_bot(uuid):
 
 
 @general.route("/bots/<uuid>/console", methods=["GET"])
+@login_required
 def console(uuid):
 
     bot = Bot.query.get(uuid)

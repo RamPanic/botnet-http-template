@@ -1,16 +1,18 @@
 
-# System imports
+# Third-party imports
 
 from flask import Flask
 
-# Custom imports
+# Local application/library specific imports
 
 from config import config
 from routes.bots import bots
+from routes.auth import auth
+from routes.noauth import noauth
 from routes.general import general
 from schemas.schema import marshmallow
-from utils.database import database
-
+from utils.database import database 
+from utils.login import login_manager
 
 # Initial
 
@@ -32,8 +34,14 @@ database.init_app(app)
 
 marshmallow.init_app(app)
 
+# Init Login Manager
+
+login_manager.init_app(app)
+
 # Blueprints
 
+app.register_blueprint(noauth)
+app.register_blueprint(auth)
 app.register_blueprint(bots)
 app.register_blueprint(general)
 

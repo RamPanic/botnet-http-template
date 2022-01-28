@@ -1,0 +1,28 @@
+
+{% extends "layout.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+    <!-- Acá estará todo el Template relacionado al login -->
+
+    <h2 class="bt-title">Login</h2>
+
+    <form class="bt-form" method="POST" action="/login">
+      <div class="form-group">
+        <label class="bt-label" for="username">Botmaster alias</label>
+        <input type="text" name="username" class="form-control" id="username">
+      </div>
+      <div class="form-group">
+        <label class="bt-label" for="password">Password</label>
+        <input type="password" name="password" class="form-control" id="password">
+      </div>
+      <button class="btn bt-btn">Submit</button>
+    </form>
+
+{% endblock %}
+
+{% block custom_scripts %}
+
+{% endblock %}

@@ -1,0 +1,39 @@
+
+/* Insert everything related to the Login here */
+
+.bt-form {
+
+    margin: var(--login-align);
+    width: var(--login-size);
+
+}
+
+
+/* Label */
+
+.bt-label {
+
+    color: var(--secondary-color);
+
+}
+
+
+/* Button */
+
+.bt-btn {
+
+
+    color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+    width: 100%;
+    margin-top: 20px;
+
+}
+
+.bt-btn:hover {
+
+
+    color: var(--tertiary-color);
+    border-color: var(--tertiary-color);
+
+}

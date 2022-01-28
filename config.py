@@ -5,7 +5,7 @@ class Config:
 
     """ Base config """
 
-    SECRET_KEY = ""
+    SECRET_KEY = "test"
     
     STATIC_FOLDER = 'static'
     

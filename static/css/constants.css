@@ -16,6 +16,11 @@
     --title-align: center;
     --title-padding: 40px;
 
+    /* Login  */
+
+    --login-size: 20%;
+    --login-align: auto;
+
     /* Menu */
 
     --menu-title-size: 35px;
