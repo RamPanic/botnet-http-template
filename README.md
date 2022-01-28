@@ -1,6 +1,11 @@
+
 # Botnet HTTP Template
 
-Una plantilla básica para crear tu propia botnet, no solo el estilo del panel, sino que también a nivel funcional, ya que más adelante se podrá agregar módulos personalizados. Por ahora, está solo el esqueleto (estructura) de la misma, se irá completando poco a poco.
+Una plantilla básica para crear tu propia botnet, no solo el estilo del panel, sino que también a nivel funcional, ya que más adelante se podrá agregar módulos personalizados. Se irá completando poco a poco.
+
+## Funcionamiento
+
+![](https://i0.wp.com/securityaffairs.co/wordpress/wp-content/uploads/2013/04/04.jpg)
 
 ## Servidor C&C
 
@@ -27,8 +32,6 @@ python3 runserver.py
 ## Cliente 
 
 ### Ejecución
-
-Primero configuramos el archivo *config.py* y luego escribimos:
 
 ```bash
 python3 client-v2.py
