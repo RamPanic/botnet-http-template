@@ -3,3 +3,4 @@ flask
 flask_sqlalchemy
 flask_marshmallow
 requests
+flask_login
