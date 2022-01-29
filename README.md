@@ -37,6 +37,10 @@ python3 runserver.py
 python3 client-v2.py
 ```
 
+## Una muestra de este software
+
+![](https://i.imgur.com/yCfx1lG.png)
+
 ## Advertencia
 
 El mal uso de este software puede generar problemas legales y éticos de los cuales no apoyo y mucho menos me haré responsable.
