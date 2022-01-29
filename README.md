@@ -41,6 +41,8 @@ python3 client-v2.py
 
 ![](https://i.imgur.com/yCfx1lG.png)
 
+![](https://i.imgur.com/Z8VwibH.png)
+
 ## Advertencia
 
 El mal uso de este software puede generar problemas legales y éticos de los cuales no apoyo y mucho menos me haré responsable.
